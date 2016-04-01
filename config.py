@@ -23,6 +23,8 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SECRET_KEY = 'super-secret-key-not-secret-at-all'
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SECURITY_PASSWORD_HASH = 'pbkdf2_sha512'
+    SECURITY_PASSWORD_SALT = '1Ha7'
 
 
 class TestingConfig(Config):
