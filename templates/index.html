@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="logo">
+  <img src="{{ url_for('static', filename='media/logo.png') }}" alt="logo" class="logo-img">
+</div>
+<div class="buttons">
+  <div class="left-button button">Hide</div>
+  <div class="right-button button">Show</div>
+</div>
+
+{% endblock %}
+
+
+{% block nav_list %}
+  {{ super() }}
+  <li><a href="{{ url_for('security.logout') }}">Logout</a></li>
+{% endblock %}
