@@ -15,5 +15,8 @@
 
 {% block nav_list %}
   {{ super() }}
+  {% if current_user.has_role('admin') %}
+  <li><a href="{{url_for('user.edit_view')}}">Administration</a></li>
+  {% endif %}
   <li><a href="{{ url_for('security.logout') }}">Logout</a></li>
 {% endblock %}

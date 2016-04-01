@@ -1,6 +1,8 @@
 import os
 
 from flask import Flask
+from flask.ext.admin import Admin
+from flask.ext.admin.base import MenuLink
 from flask.ext.security import (
     Security,
     SQLAlchemyUserDatastore,
@@ -27,6 +29,23 @@ security = Security(app, user_datastore)
 # Blueprint registration
 from modules.users.views import user_login
 app.register_blueprint(user_login)
+
+# Administration
+from modules.users.admin import (
+    UserAdmin,
+    RoleAdmin,
+    AuthenticatedMenuLink,
+    NotAuthenticatedMenuLink
+)
+admin = Admin(app)
+admin.add_view(UserAdmin(User, db.session))
+admin.add_view(RoleAdmin(Role, db.session))
+admin.add_link(MenuLink(name='Refunite', url='/'))
+admin.add_link(NotAuthenticatedMenuLink(name='Login',
+                                        endpoint='security.login'))
+admin.add_link(AuthenticatedMenuLink(name='Logout',
+                                     endpoint='security.logout'))
+
 
 # Create admin and test user
 @app.before_first_request
