@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='shortcut icon' href='{{ url_for('static', filename='media/favicon.ico') }}' type='image/x-icon'/ >
     {% block css_assets %}
+    {% assets "css_minified" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" media="screen">
+    {% endassets %}
+    {% assets "scss_compiled" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" media="screen">
+    {% endassets %}
     {% endblock %}
   </head>
   <body>
@@ -45,5 +51,9 @@
       {% endfor %}
       {% endblock %}
     </div>
+
+  {% assets "js_minified" %}
+  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
   </body>
 </html>

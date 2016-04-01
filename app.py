@@ -46,6 +46,10 @@ admin.add_link(NotAuthenticatedMenuLink(name='Login',
 admin.add_link(AuthenticatedMenuLink(name='Logout',
                                      endpoint='security.logout'))
 
+# Bundles
+from modules.users.bundles import assets
+assets.init_app(app)
+
 
 # Create admin and test user
 @app.before_first_request

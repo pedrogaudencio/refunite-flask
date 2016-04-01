@@ -7,6 +7,7 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = ''
+    ASSETS_DEBUG = False
 
 
 class ProductionConfig(Config):
@@ -25,6 +26,7 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SECURITY_PASSWORD_HASH = 'pbkdf2_sha512'
     SECURITY_PASSWORD_SALT = '1Ha7'
+    ASSETS_DEBUG = True
 
 
 class TestingConfig(Config):

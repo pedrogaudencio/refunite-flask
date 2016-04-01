@@ -1,0 +1,1 @@
+$('.left-button').click(function() {$('.logo-img').fadeOut(500)})
